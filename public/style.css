@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.App {
+    padding: 20px;
+}
+
+.form {
+    /* border: 1px solid #bbbbbb; */
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px rgba(88, 88, 88, 50%);
+    margin: 10px auto;
+    padding: 20px;
+    width: 60%;
+}
+
+.field p{
+    margin: 5px 0px;
+    width: 100%;
+}
+
+.field p input {
+    width: 80%;
+    float: right;
+}
+
+.form input[type="button"] {
+    padding: 0px 5px;
+}
