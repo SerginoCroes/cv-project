@@ -9,14 +9,14 @@ export default class Form extends Component {
             case 'personal': 
                 this.fields = ['name', 'email', 'phone'];
                 break;
-
             case 'education': 
                 this.fields = ['study', 'school', 'start', 'end'];
                 break;
-
             case 'work': 
                 this.fields = ['work', 'company', 'start', 'end'];
                 break;
+            default:
+                this.fields = [];
         }
     }
 

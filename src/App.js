@@ -4,7 +4,7 @@ import Form from "./components/Form";
 export default class App extends Component {
   constructor() {
     super();
-    this.formTypes = ['personal', 'education', 'work'];
+    this.formTypes = ['personal', 'education', 'work', 'work'];
   }
 
   render() {
