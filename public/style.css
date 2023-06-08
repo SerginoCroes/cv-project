@@ -19,7 +19,7 @@ body {
     width: 60%;
 }
 
-.form, .buttons{
+.form{
     /* border: 1px solid #bbbbbb; */
     margin: 20px;
 }
@@ -34,11 +34,7 @@ body {
     float: right;
 }
 
-.buttons {
-    text-align: center;
-}
-
-.buttons input[type="button"] {
+input[type="button"] {
     box-shadow: none;
     margin: 0px 5px;
     padding: 5px 15px;
