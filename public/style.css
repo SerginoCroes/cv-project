@@ -6,19 +6,22 @@
 
 body {
     font-family: sans-serif;
+    background-color: #f8f8f8;
 }
 
 .App {
+    background-color: #ffffff;
     padding: 20px;
-}
-
-.form {
-    /* border: 1px solid #bbbbbb; */
     border-radius: 10px;
     box-shadow: 5px 5px 15px rgba(88, 88, 88, 50%);
-    margin: 10px auto;
+    margin: 30px auto;
     padding: 20px;
     width: 60%;
+}
+
+.form, .buttons{
+    /* border: 1px solid #bbbbbb; */
+    margin: 20px;
 }
 
 .field p {
@@ -31,6 +34,18 @@ body {
     float: right;
 }
 
-.form input[type="button"] {
-    padding: 0px 5px;
+.buttons {
+    text-align: center;
+}
+
+.buttons input[type="button"] {
+    box-shadow: none;
+    margin: 0px 5px;
+    padding: 5px 15px;
+    border: 1px solid #333333;
+    border-radius: 3px;
+    background-color: #333333;
+    color: #eeeeee;
+    font-size: 1rem;
+    font-weight: bold;
 }
