@@ -6,13 +6,13 @@ export default class App extends Component {
   constructor() {
     super();
 
-    this.educationTemp = { Study: '', School: '', Start: '', End: '' };
-    this.workTemp = { Work: '', Company: '', Start: '', End: '' };
+    this.educationFormTemp = { Study: '', School: '', Start: '', End: '' };
+    this.workFormTemp = { Work: '', Company: '', Start: '', End: '' };
 
     this.state = {
       personal: { Name: '', Email: '', Phone: '' },
-      education: { [uniqid()]: {...this.educationTemp} },
-      work: { [uniqid()]: {...this.workTemp} }
+      education: { [uniqid()]: {...this.educationFormTemp} },
+      work: { [uniqid()]: {...this.workFormTemp} }
     };
 
     this.addForm = this.addForm.bind(this);
@@ -22,7 +22,7 @@ export default class App extends Component {
 
   addForm(type) {
     const temp = {...this.state[type]};
-    temp[uniqid()] = (type === 'education' ? {...this.educationTemp} : {...this.workTemp});
+    temp[uniqid()] = (type === 'education' ? {...this.educationFormTemp} : {...this.workFormTemp});
     this.setState({[type]: temp});
   }
 
@@ -39,15 +39,16 @@ export default class App extends Component {
   }
 
   render() {
-
     const { personal, education, work } = this.state;
-
     return (
       <div className="App">
-        <Form index={uniqid()} key='personal' formtype='Personal' attr={personal} changeText={this.changeText}/>
-        {Object.keys(education).map((key) => <Form key={key} index={key} formtype='Education' attr={education[key]} del={this.delForm} changeText={this.changeText}/>)}
+        <h3>Personal:</h3>
+        <Form key='personal' index={uniqid()} formtype='personal' attr={personal} changeText={this.changeText}/>
+        <h3>Education:</h3>
+        {Object.keys(education).map((key) => <Form key={key} index={key} formtype='education' attr={education[key]} del={this.delForm} changeText={this.changeText}/>)}
         <input type='button' value="Add education" onClick={() => this.addForm('education')} />
-        {Object.keys(work).map((key) => <Form key={key} index={key} formtype='Work' attr={work[key]} del={this.delForm} changeText={this.changeText}/>)}
+        <h3>Work:</h3>
+        {Object.keys(work).map((key) => <Form key={key} index={key} formtype='work' attr={work[key]} del={this.delForm} changeText={this.changeText}/>)}
         <input type='button' value="Add work" onClick={() => this.addForm('work')} />
       </div>
     );

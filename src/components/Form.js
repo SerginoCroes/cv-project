@@ -9,7 +9,7 @@ export default class Form extends Component {
 
     changeText(field, value) {
         const {index, formtype, changeText} = this.props;
-        changeText(formtype.toLowerCase(), index, field, value);
+        changeText(formtype, index, field, value);
     }
 
     render() {
@@ -17,10 +17,9 @@ export default class Form extends Component {
         return (
             <>
                 <div className="form">
-                    <h3>{formtype}:</h3>
                     {Object.keys(attr).map((field, i) => <Field key={i} fieldName={field} value={attr[field]} changeText={this.changeText}/>)}
                 </div>
-                {(formtype !== 'Personal') && <input type="button" value="Delete" onClick={() => del(formtype.toLowerCase(), index)}/>}
+                {(formtype !== 'personal') && <input type="button" value="Delete" onClick={() => del(formtype, index)}/>}
             </>
         )        
     }
