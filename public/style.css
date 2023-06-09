@@ -35,8 +35,10 @@ body {
 }
 
 input[type="button"] {
+    display: block;
+    width: 80%;
     box-shadow: none;
-    margin: 0px 5px;
+    margin: 5px auto;
     padding: 5px 15px;
     border: 1px solid #333333;
     border-radius: 3px;

@@ -6,11 +6,10 @@ export default class Field extends Component {
     }
 
     render() {
-        const {fieldName, value} = this.props;
-
+        const {fieldName, value, changeText} = this.props;
         return (
             <div className="field">
-                <p>{`${fieldName}: `}<input type='text' value={value}></input></p>
+                <p>{`${fieldName}: `}<input type='text' value={value} onChange={e => changeText(fieldName, e.target.value)}></input></p>
             </div>     
         )   
     }

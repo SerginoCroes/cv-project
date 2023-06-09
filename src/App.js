@@ -1,33 +1,41 @@
 import { Component } from "react";
 import Form from "./components/Form";
+import uniqid from "uniqid";
 
 export default class App extends Component {
   constructor() {
     super();
 
-    const educationTemp = { Study: 'haha', School: '', Start: '', End: '' };
-    const workTemp = { Work: '', Company: '', Start: '', End: '' };
+    this.educationTemp = { Study: '', School: '', Start: '', End: '' };
+    this.workTemp = { Work: '', Company: '', Start: '', End: '' };
 
     this.state = {
       personal: { Name: '', Email: '', Phone: '' },
-      education: { 0: {...educationTemp} },
-      work: { 0: {...workTemp} }
+      education: { [uniqid()]: {...this.educationTemp} },
+      work: { [uniqid()]: {...this.workTemp} }
     };
 
     this.addForm = this.addForm.bind(this);
     this.delForm = this.delForm.bind(this);
+    this.changeText = this.changeText.bind(this);
   }
 
-  addForm(type, index) {
-    const temp = [...this.state[type]];
-    temp.push(index + 1);
-    this.setState({ [type]: temp });
+  addForm(type) {
+    const temp = {...this.state[type]};
+    temp[uniqid()] = (type === 'education' ? {...this.educationTemp} : {...this.workTemp});
+    this.setState({[type]: temp});
   }
 
   delForm(type, index) {
-    const temp = [...this.state[type]];
-    temp.splice(index, 1);
-    this.setState({ [type]: temp });
+    const temp = {...this.state[type]};
+    delete temp[index];
+    this.setState({[type]: temp});
+  }
+
+  changeText(type, index, attr, value) {
+    const temp = {...this.state[type]};
+    type !== 'personal' ? temp[index][attr] = value : temp[attr] = value;
+    this.setState({[type]: temp});
   }
 
   render() {
@@ -36,16 +44,11 @@ export default class App extends Component {
 
     return (
       <div className="App">
-        <Form key='personal' formtype='Personal' attr={personal} />
-
-        {Object.keys(education).map((key, index) => <Form index={index} formtype='Education' attr={education[key]} del={this.delForm} />)}
-
-        <input type='button' value="Add" onClick={() => this.addForm('formtype')} />
-
-        {Object.keys(work).map((key, index) => <Form index={index} formtype='Work' attr={work[key]} del={this.delForm} />)}
-
-        <input type='button' value="Add" onClick={() => this.addForm('formtype')} />
-
+        <Form index={uniqid()} key='personal' formtype='Personal' attr={personal} changeText={this.changeText}/>
+        {Object.keys(education).map((key) => <Form key={key} index={key} formtype='Education' attr={education[key]} del={this.delForm} changeText={this.changeText}/>)}
+        <input type='button' value="Add education" onClick={() => this.addForm('education')} />
+        {Object.keys(work).map((key) => <Form key={key} index={key} formtype='Work' attr={work[key]} del={this.delForm} changeText={this.changeText}/>)}
+        <input type='button' value="Add work" onClick={() => this.addForm('work')} />
       </div>
     );
   }
