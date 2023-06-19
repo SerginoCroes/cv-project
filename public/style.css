@@ -19,17 +19,22 @@ body {
     width: 60%;
 }
 
+h3 {
+    margin: 20px 0px 0px;
+}
+
 .form{
     /* border: 1px solid #bbbbbb; */
     margin: 20px;
 }
 
-.field p {
+.field label {
+    display: block;
     margin: 5px 0px;
     width: 100%;
 }
 
-.field p input {
+.field label input {
     width: 80%;
     float: right;
 }
@@ -46,4 +51,24 @@ input[type="button"] {
     color: #eeeeee;
     font-size: 1rem;
     font-weight: bold;
+}
+
+.cv {
+    padding: 30px 20px;
+}
+
+.cvfield {
+    margin: 20px 0px;
+}
+
+.cv h2{
+    margin: 5px 0px;
+}
+
+.cv p {
+    margin: 5px 0px;
+}
+
+.cv hr {
+    margin: 10px 0px;
 }

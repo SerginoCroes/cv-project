@@ -1,5 +1,6 @@
 import { Component } from "react";
 import Form from "./components/Form";
+import Cvform from "./components/Cvform";
 import uniqid from "uniqid";
 
 export default class App extends Component {
@@ -7,7 +8,7 @@ export default class App extends Component {
     super();
 
     this.educationFormTemp = { Study: '', School: '', Start: '', End: '' };
-    this.workFormTemp = { Work: '', Company: '', Start: '', End: '' };
+    this.workFormTemp = { Work: '', Task: '', Company: '', Start: '', End: '' };
 
     this.state = {
       personal: { Name: '', Email: '', Phone: '' },
@@ -50,6 +51,22 @@ export default class App extends Component {
         <h3>Work:</h3>
         {Object.keys(work).map((key) => <Form key={key} index={key} formtype='work' attr={work[key]} del={this.delForm} changeText={this.changeText}/>)}
         <input type='button' value="Add work" onClick={() => this.addForm('work')} />
+        <hr/>
+        <h3>CV:</h3>
+
+        <div className="cv">
+          <div className="cvfield">
+            <h2>{personal.Name}</h2>
+            <p>{personal.Email}</p>
+            <p>{personal.Phone}</p>
+          </div>
+          <hr/>
+          <h3>Education:</h3>
+          {Object.keys(education).map((key) => <Cvform key={key} index={key} attr={education[key]}/>)}
+          <hr/>
+          <h3>Work:</h3>
+          {Object.keys(work).map((key) => <Cvform key={key} index={key} attr={work[key]}/>)}
+        </div>     
       </div>
     );
   }
