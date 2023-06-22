@@ -1,26 +1,21 @@
-import { Component } from "react";
 import Field from "./Field";
 
-export default class Form extends Component {
-    constructor(props) {
-        super(props);
-        this.changeText = this.changeText.bind(this);
-    }
+const Form = (props) => {
+    const { index, formtype, attr, del } = props;
 
-    changeText(field, value) {
-        const {index, formtype, changeText} = this.props;
+    const changeText = (field, value) => {
+        const { index, formtype, changeText } = props;
         changeText(formtype, index, field, value);
     }
 
-    render() {
-        const {index, formtype, attr, del} = this.props;        
-        return (
-            <>
-                <div className="form">
-                    {Object.keys(attr).map((field, i) => <Field key={i} fieldName={field} value={attr[field]} changeText={this.changeText}/>)}
-                </div>
-                {(formtype !== 'personal') && <input type="button" value="Delete" onClick={() => del(formtype, index)}/>}
-            </>
-        )        
-    }
+    return (
+        <>
+            <div className="form">
+                {Object.keys(attr).map((field, i) => <Field key={i} fieldName={field} value={attr[field]} changeText={changeText} />)}
+            </div>
+            {(formtype !== 'personal') && <input type="button" value="Delete" onClick={() => del(formtype, index)} />}
+        </>
+    )
 }
+
+export default Form;
