@@ -32,34 +32,33 @@ const App = () => {
     setForms({ ...forms, [type]: temp });
   }
 
-  render() {
-    const { personal, education, work } = this.state;
-    return (
-      <div className="App">
-        <h3>Personal:</h3>
-        <Form key='personal' index={uniqid()} formtype='personal' attr={personal} changeText={this.changeText}/>
+  return (
+    <div className="App">
+      <h3>Personal:</h3>
+      <Form key='personal' index={uniqid()} formtype='personal' attr={forms.personal} changeText={changeText} />
+      <h3>Education:</h3>
+      {Object.keys(forms.education).map((key) => <Form key={key} index={key} formtype='education' attr={forms.education[key]} del={delForm} changeText={changeText} />)}
+      <input type='button' value="Add education" onClick={() => addForm('education')} />
+      <h3>Work:</h3>
+      {Object.keys(forms.work).map((key) => <Form key={key} index={key} formtype='work' attr={forms.work[key]} del={delForm} changeText={changeText} />)}
+      <input type='button' value="Add work" onClick={() => addForm('work')} />
+      <hr />
+      <h3>CV:</h3>
+      <div className="cv">
+        <div className="cvfield">
+          <h2>{forms.personal.Name}</h2>
+          <p>{forms.personal.Email}</p>
+          <p>{forms.personal.Phone}</p>
+        </div>
+        <hr />
         <h3>Education:</h3>
-        {Object.keys(education).map((key) => <Form key={key} index={key} formtype='education' attr={education[key]} del={this.delForm} changeText={this.changeText}/>)}
-        <input type='button' value="Add education" onClick={() => this.addForm('education')} />
+        {Object.keys(forms.education).map((key) => <Cvform key={key} index={key} attr={forms.education[key]} />)}
+        <hr />
         <h3>Work:</h3>
-        {Object.keys(work).map((key) => <Form key={key} index={key} formtype='work' attr={work[key]} del={this.delForm} changeText={this.changeText}/>)}
-        <input type='button' value="Add work" onClick={() => this.addForm('work')} />
-        <hr/>
-        <h3>CV:</h3>
-        <div className="cv">
-          <div className="cvfield">
-            <h2>{personal.Name}</h2>
-            <p>{personal.Email}</p>
-            <p>{personal.Phone}</p>
-          </div>
-          <hr/>
-          <h3>Education:</h3>
-          {Object.keys(education).map((key) => <Cvform key={key} index={key} attr={education[key]}/>)}
-          <hr/>
-          <h3>Work:</h3>
-          {Object.keys(work).map((key) => <Cvform key={key} index={key} attr={work[key]}/>)}
-        </div>     
+        {Object.keys(forms.work).map((key) => <Cvform key={key} index={key} attr={forms.work[key]} />)}
       </div>
-    );
-  }
+    </div>
+  );
 }
+
+export default App;
