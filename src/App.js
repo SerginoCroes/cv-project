@@ -4,7 +4,6 @@ import Cvform from "./components/Cvform";
 import uniqid from "uniqid";
 
 const App = () => {
-
   const educationFormTemp = { Study: '', School: '', Start: '', End: '' };
   const workFormTemp = { Work: '', Task: '', Company: '', Start: '', End: '' };
 
@@ -18,19 +17,19 @@ const App = () => {
     const temp = { ...forms[type] };
     temp[uniqid()] = (type === 'education' ? { ...educationFormTemp } : { ...workFormTemp });
     setForms({ ...forms, [type]: temp });
-  }
+  };
 
   const delForm = (type, index) => {
     const temp = { ...forms[type] };
     delete temp[index];
     setForms({ ...forms, [type]: temp });
-  }
+  };
 
   const changeText = (type, index, attr, value) => {
     const temp = { ...forms[type] };
     type !== 'personal' ? temp[index][attr] = value : temp[attr] = value;
     setForms({ ...forms, [type]: temp });
-  }
+  };
 
   return (
     <div className="App">
@@ -59,6 +58,6 @@ const App = () => {
       </div>
     </div>
   );
-}
+};
 
 export default App;
