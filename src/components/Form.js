@@ -4,8 +4,7 @@ const Form = (props) => {
     const { index, formtype, attr, del } = props;
 
     const changeText = (field, value) => {
-        const { index, formtype, changeText } = props;
-        changeText(formtype, index, field, value);
+        props.changeText(formtype, index, field, value);
     }
 
     return (

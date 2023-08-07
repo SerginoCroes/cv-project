@@ -51,13 +51,13 @@ const App = () => {
         </div>
         <hr />
         <h3>Education:</h3>
-        {Object.keys(forms.education).map((key) => <Cvform key={key} index={key} attr={forms.education[key]} />)}
+        {Object.keys(forms.education).map((key) => <Cvform key={key} attr={forms.education[key]} />)}
         <hr />
         <h3>Work:</h3>
-        {Object.keys(forms.work).map((key) => <Cvform key={key} index={key} attr={forms.work[key]} />)}
+        {Object.keys(forms.work).map((key) => <Cvform key={key} attr={forms.work[key]} />)}
       </div>
     </div>
-  );
+  )
 };
 
 export default App;

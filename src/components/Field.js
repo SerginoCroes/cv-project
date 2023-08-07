@@ -1,9 +1,7 @@
-const Field = (props) => {
-    const { fieldName, value, changeText } = props;
-
+const Field = ({ fieldName, value, changeText }) => {
     return (
         <div className="field">
-            <label>{`${fieldName}: `}<input type={fieldName === 'Start' || fieldName === 'End' ? 'date' : 'text'} value={value} onChange={e => changeText(fieldName, e.target.value)}></input></label>
+            <label>{`${fieldName}: `}<input type={fieldName === 'Start' || fieldName === 'End' ? 'date' : 'text'} value={value} onChange={(e) => changeText(fieldName, e.target.value)}></input></label>
         </div>
     )
 }
